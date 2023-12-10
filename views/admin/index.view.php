@@ -1,15 +1,8 @@
-<?php
-    
-    echo  '<h1>' . $view_bag['heading'] . '</h1>' ;
 
-?>
 
 <div style="margin-bottom: 2em;">
-                <h3> <?php echo $view_bag['heading'] . ' ' ?></h3>
-                <form action="" method="GET">
-                    <input type="text" name="search" id="search" placeholder="search for something">
-                    <input type="submit" value="xt">
-                </form>
+               
+                <a href="create.php">Create New Term</a>
 </div>
 
 <div style="display:flex; justify-content: space-between; ">

@@ -1,5 +1,6 @@
 <?php
 
+define('APP_NAME',dirname(__FILE__) . '/../');
 
 require('config.php');
 require('functions.php');

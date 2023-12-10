@@ -44,3 +44,18 @@ function search_terms($search){
 
     return $results;
 }
+
+function add_term($term,$definition){
+    $item = get_terms();
+
+    $arr = [
+        'term' => $term,
+        'definition' => $definition
+    ];
+
+    $obj = (object) $arr;
+
+    $items[] = $obj;
+
+    set_data($items);
+}
