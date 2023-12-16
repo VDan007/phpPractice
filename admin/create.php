@@ -10,7 +10,7 @@ if(is_post()){
         //TODO display message
     } else{
         add_term($term,$definition);
-        redirect('index/php');
+        redirect('index.php');
     }
     
 }

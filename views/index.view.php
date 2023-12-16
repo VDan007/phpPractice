@@ -12,7 +12,7 @@
                 </form>
 </div>
 
-<div style="display:flex; justify-content: space-between; ">
+<div style="display:flex; flex-direction:column; justify-content: space-between; ">
     
          <?php foreach ($model as $item) : ?>
             <div style="border: 5px solid red; display:flex;justify-content: center; align-items:center; gap:20px;">

@@ -14,6 +14,9 @@ function redirect($url){
 function is_post(){
     return $_SERVER['REQUEST_METHOD'] === 'POST';
 }
+function is_get(){
+    return $_SERVER['REQUEST_METHOD'] === 'GET';
+}
 
 function sanitize($value){
     $temp = htmlspecialchars(trim($value));

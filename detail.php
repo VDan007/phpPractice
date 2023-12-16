@@ -11,7 +11,7 @@ if(!isset($_GET['term'])){
 $data = get_term($_GET['term']);  //TODO: validate input
 
 if($data == false){
-    view('not_found',$_GET['term']);
+    view('not_found');
     die();
 }
 
