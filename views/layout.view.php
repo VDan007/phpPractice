@@ -11,7 +11,7 @@
     <header>
         <nav>
             <ul class="nav_ul">
-                <li> <a href="/project1">home</a> </li>
+                <li> <a href="/glossary">home</a> </li>
                 <!-- <li> <a href="input.php">input</a> </li>
                 <li> <a href="login.php">login</a></li>
                 <li> <a href="logout.php">logout</a> </li> -->

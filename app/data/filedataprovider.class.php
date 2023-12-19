@@ -1,5 +1,7 @@
 <?php
 
+require('glossaryterm.class.php');
+
 class FileDataProvider{
     function __construct($file_path){
         $this->file_path = $file_path;
@@ -7,7 +9,7 @@ class FileDataProvider{
 
 
 
-    function get_data(){
+   private function get_data(){
         
     
         $json = '';
@@ -23,7 +25,7 @@ class FileDataProvider{
     }
     
     
-    function get_term($term){
+   public function get_term($term){
         $terms = $this->get_terms();
         foreach($terms as $item){
             if($item->term == $term){
@@ -34,12 +36,12 @@ class FileDataProvider{
         return false;
     }
     
-    function get_terms(){
+   public function get_terms(){
         $json = $this->get_data();
         return json_decode($json);
     }
     
-    function search_terms($search){
+   public function search_terms($search){
         $items = $this->get_terms();
         $results = array_filter($items,function($item) use($search){
             if(strpos($item->term,$search)!==false ||
@@ -51,7 +53,7 @@ class FileDataProvider{
         return $results;
     }
     
-    function add_term($term,$definition){
+  public  function add_term($term,$definition){
         $items = $this->get_terms();
     
         $items[] = new GlossaryTerm($term,$definition);
@@ -59,7 +61,7 @@ class FileDataProvider{
         $this->set_data($items);
     }
     
-    function update_term($original_term, $new_term, $definition){
+  public  function update_term($original_term, $new_term, $definition){
         $terms = $this->get_terms();
         foreach($terms as $item){
             if($item->term == $original_term){
@@ -73,7 +75,7 @@ class FileDataProvider{
     }
     
     
-    function delete_term($term){
+  public  function delete_term($term){
         $terms = $this->get_terms();
     
         for($i = 0; $i<  count($terms); $i++){
@@ -90,7 +92,7 @@ class FileDataProvider{
     }
     
     
-    function set_data($arr){
+   private function set_data($arr){
        
     
         $json = json_encode($arr);
