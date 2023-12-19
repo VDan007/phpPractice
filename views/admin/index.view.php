@@ -14,6 +14,7 @@
                 </a>
                 <h3> <?= $item->definition ?> </h3>
                 <a href="edit.php?key=<?=$item->term?>">edit</a>
+                <a href="delete.php?key=<?=$item->term?>">delete</a>
             </div> 
 
             
