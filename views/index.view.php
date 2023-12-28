@@ -16,7 +16,7 @@
     
          <?php foreach ($model as $item) : ?>
             <div style="border: 5px solid red; display:flex;justify-content: center; align-items:center; gap:20px;">
-                <a href="detail.php?term=<?=$item->term?>">
+                <a href="detail.php?term=<?= $item->id; ?>">
                     <h1> <?= $item->term ?>: </h1>
                 </a>
                 <h3> <?= $item->definition ?> </h3>

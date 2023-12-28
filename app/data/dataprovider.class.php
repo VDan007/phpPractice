@@ -1,6 +1,6 @@
 <?php
 
-require('glossaryterm.class.php');
+ require('glossaryterm.class.php');
 
 class DataProvider{
     function __construct($source){
@@ -20,7 +20,7 @@ class DataProvider{
     }
     
   public  function add_term($term,$definition){
-     
+      
     }
     
   public  function update_term($original_term, $new_term, $definition){

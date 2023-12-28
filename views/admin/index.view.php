@@ -13,8 +13,8 @@
                     <h1> <?= $item->term ?>: </h1>
                 </a>
                 <h3> <?= $item->definition ?> </h3>
-                <a href="edit.php?key=<?=$item->term?>">edit</a>
-                <a href="delete.php?key=<?=$item->term?>">delete</a>
+                <a href="edit.php?key=<?=$item->id?>">edit</a>
+                <a href="delete.php?key=<?=$item->id?>">delete</a>
             </div> 
 
             
