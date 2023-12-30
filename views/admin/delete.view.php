@@ -6,7 +6,7 @@
         <h2>Are you sure to delet this  <?= $model->term ?>  </h2>
     </div>
     <form action="" method="POST">
-        <input type="hidden" name="term" value="<?= $model->term ?>" />
+        <input type="hidden" name="term" value="<?= $model->id ?>" />
         
 
         <input type="submit" value="delete this thang">

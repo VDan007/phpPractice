@@ -3,7 +3,7 @@
 <h1>Edit Term</h1>
 <div>
     <form action="" method="POST">
-        <input type="hidden" name="original-term" value="<?= $model->term ?>" />
+        <input type="hidden" name="original-term" value="<?= $model->id ?>" />
         <label for="term">Term:</label>
         <input type="text" name="term" id="term" value="<?= $model->term ?>" />
 

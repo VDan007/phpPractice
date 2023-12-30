@@ -41,8 +41,8 @@ class FileDataProvider extends DataProvider{
    public function search_terms($search){
         $items = $this->get_terms();
         $results = array_filter($items,function($item) use($search){
-            if(strpos($item->term,$search)!==false ||
-               strpos($item->definition,$search) !==false){
+            if(str_contains($item->term,$search)!==false ||
+               str_contains($item->definition,$search) !==false){
                 return $item;
             }
         });

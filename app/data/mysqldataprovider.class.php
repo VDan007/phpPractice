@@ -4,24 +4,10 @@
 class MySqlDataProvider extends DataProvider {
     
    public function get_terms(){
+
+    return $this->query('SELECT * FROM terms');
        
-    $db = $this->connect();
-
-    if($db == null){
-      return [];
-    }
-
-    $query = $db->query('SELECT * FROM terms');
-
-    $data = $query->fetchAll(PDO::FETCH_CLASS,'GlossaryTerm');
-
-    $query = null;
-    $db = null;
-
-    return $data;
-
-
-    }
+  }
     
    public function get_term($term){
 
@@ -53,42 +39,86 @@ class MySqlDataProvider extends DataProvider {
       
     }
     
-   public function search_terms($search){
-       
-    }
+  public function search_terms($search){
+
+    return $this->query('SELECT * FROM terms WHERE term LIKE  :search OR definition LIKE :search ',
+                        [':search' =>  '%' .$search. '%' ]
+    );
+    
+  }
     
   public  function add_term($term,$definition){
 
-      $db = $this->connect();
+      $this->execute('INSERT INTO terms (term,definition) VALUES(:term, :definition)',
+                      [
+                        ':term' => $term,
+                        ':definition' => $definition
+                      ]
+      );
 
-      if($db == null){
-        return;
-      }
-
-      $sql = 'INSERT INTO terms (term,definition) VALUES(:term, :definition)';
-
-      $stmt = $db->prepare($sql);
-
-      $stmt->execute([
-        ':term' => $term,
-        ':definition' => $definition
-      ]);
-
-      $stmt = null;
-      $db = null;
-
-     
     }
     
   public  function update_term($original_term, $new_term, $definition){
-       
+
+        $this->execute(
+          'UPDATE terms SET term = :term, definition = :definition WHERE id = :id',
+          [
+            ':term' => $new_term,
+            ':definition' => $definition,
+            ':id' => $original_term
+          ]
+        );
+
     }
     
     
   public  function delete_term($term){
-       
-        
+
+        $this->execute('DELETE FROM terms WHERE id = :id',
+        [':id' => $term]
+        );  
+
     }
+
+  private function query($sql, $sql_params = []){
+
+    $db = $this->connect();
+
+    if($db == null){
+      return [];
+    }
+
+    $query = null;
+
+    if(empty($sql_params)){
+      $query = $db->query($sql);
+    }else{
+      $query = $db->prepare($sql);
+      $query->execute($sql_params);
+    }
+
+    $data = $query->fetchAll(PDO::FETCH_CLASS,'GlossaryTerm');
+
+    $query = null;
+    $db = null;
+
+    return $data;
+
+  }  
+
+  private function execute($sql,$sql_params){
+    $db = $this->connect();
+    if($db == null){
+      return;
+    }
+
+    $stmt = $db->prepare($sql);
+
+    $stmt->execute($sql_params);
+
+    $stmt = null;
+    $db = null;
+  }
 
   private function connect(){
       try{

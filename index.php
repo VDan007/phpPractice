@@ -20,7 +20,7 @@ require('app/app.php');
    $items = Data::get_terms();
  }
 
-view('index',Data::get_terms());
+view(name:'index', model:Data::get_terms());
 
 
 ?>
